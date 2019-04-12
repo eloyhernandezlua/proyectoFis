@@ -1,0 +1,11 @@
+<div class="row">
+
+    <div class="col-3">
+        <app-menu-filtros></app-menu-filtros>
+    </div>
+    <div class="col-9">
+        <div class="row">
+            <app-productos *ngFor="let producto of productos | async" [producto]="producto"></app-productos>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="row">
+
+    <div class="col-12">
+
+    </div>
+    <div class="col-12">
+        <div class="row">
+            <app-categorias *ngFor="let categoria of categorias | async" [categoria]="categoria"></app-categorias>
+        </div>
+    </div>
+</div>
+
+<!-- 
+  <div class="card col" style="width: 18rem;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcwRKeTVvnBMvpX6uvnQiBQeHIrwzFDq9qCkxTCBNkSQKts2xXNg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <p class="card-text">Inmuebles</p>
+                <form>
+                    <select class="custom-select" (change)="select($event)">
+                        <option selected>¿Qué buscas?</option>
+                        <option value="1/1">Casa</option>
+                        <option value="2">Departamento</option>
+                        <option value="3">Cuarto</option>
+                      </select>
+                </form>
+            </div>
+        </div>
+  -->

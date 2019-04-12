@@ -1,0 +1,14 @@
+<div class="card col" style="width: 18rem;">
+    <img src={{categoria.imagen}}>
+    <div class="card-body">
+        <p class="card-text">{{categoria.id}}</p>
+        <form>
+            <select class="custom-select" (change)="select($event)">
+                <option selected>¿Qué buscas?</option>
+                <option value="1/1">Casa</option>
+                <option value="2">Departamento</option>
+                <option value="3">Cuarto</option>
+              </select>
+        </form>
+    </div>
+</div>

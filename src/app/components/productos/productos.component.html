@@ -1,0 +1,10 @@
+<div class="card" style="width: 18rem;">
+    <a [routerLink]='producto.id'>
+        <img [src]='producto.imagen' class="card-img-top" alt="...">
+    </a>
+    <div class="card-body">
+        <h5 class="card-title">{{producto.nombre}}</h5>
+        <p class="card-subtitle">Precio {{producto.precio | currency}}</p>
+
+    </div>
+</div>
