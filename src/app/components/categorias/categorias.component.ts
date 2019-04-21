@@ -21,6 +21,11 @@ export class CategoriasComponent implements OnInit {
   onChange(event) {
     this.router.navigateByUrl(`${this.categoria.id}/${event.target.value}`);
   }
-  
+  addSubCat() {
+    const subcat = prompt('Nombre sub categoria');
+    if (subcat) {
+      this.db.addSubCat(this.categoria.id, subcat);
+    }
+  }
 
 }

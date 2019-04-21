@@ -104,6 +104,10 @@ publish(producto) {
   return this.afs.collection(`categorias/${producto.cat}/subcat/${producto.subcat}/productos`).add(data);
 }
 
+addSubCat(cat, subcat) {
+  this.afs.doc(`categorias/${cat}/subcat/${subcat}`).set({});
+}
+
 
 }
 
