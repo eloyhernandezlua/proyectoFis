@@ -1,0 +1,20 @@
+<form ngForm="pForm" (submit)="onSubmit()" onsubmit="return false">
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input class="form-control" type="text" id="nombre" [(ngModel)]="usuario.nombre" name="nombre" required>
+
+        <label for="telefono">Teléfono</label>
+        <input class="form-control" type="text" id="telefono" [(ngModel)]="usuario.telefono" name="telefono" required>
+
+        <label for="email">Correo electrónico</label>
+        <input class="form-control" type="text" id="email" [(ngModel)]="usuario.email" name="email" required>
+
+        <label for="pwd">Contraseña</label>
+        <input class="form-control" type="text" id="pwd" [(ngModel)]="usuario.pwd" name="pwd" required>
+
+        <label for="pwd2">Repita Contraseña</label>
+        <input class="form-control" type="text" id="pwd2" [(ngModel)]="usuario.pwd2" name="pwd2" required>
+    </div>
+
+    <button class="btn btn-success btn-block" type="submit">Submit</button>
+</form>

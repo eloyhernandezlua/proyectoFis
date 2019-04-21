@@ -1,0 +1,31 @@
+<form ngForm="pForm" (submit)="onSubmit()" onsubmit="return false">
+    <div class="form-group">
+        <label for="Nombre">Nombre del producto</label>
+        <input class="form-control" type="text" id="Nombre" [(ngModel)]="producto.nombre" name="nombre" required>
+
+        <label for="Imagen">Imagen del producto</label>
+        <input class="form-control" type="text" id="Imagen" [(ngModel)]="producto.imagen" name="imagen" required>
+
+        <label for="Descripcion">Descripción del producto</label>
+        <input class="form-control" type="text" id="Descripcion" [(ngModel)]="producto.descripcion" name="descripcion" required>
+
+        <label for="Precio">Precio del producto</label>
+        <input class="form-control" type="text" id="Precio" [(ngModel)]="producto.precio" name="precio" required>
+
+        <label for="Categoria">Categoria del producto</label>
+        <select class="custom-select" id="Categoria" [(ngModel)]="producto.cat" name="cat" (change)="onCatChange()" required>
+          <option selected>Selecciona la categoría</option>
+          <option *ngFor= "let categoria of categorias | async" value="{{categoria.id}}">{{categoria.id}}</option>
+        </select>
+
+        <div *ngIf="producto.cat">
+            <label for="SubCategoria">Subcategoria del producto</label>
+            <select class="custom-select" id="SubCategoria" [(ngModel)]="producto.subcat" name="subcat" required>
+            <option selected>Selecciona la Subcategoría</option>
+            <option *ngFor= "let subcategoria of subcategorias | async" value="{{subcategoria.id}}">{{subcategoria.id}}</option>
+          </select>
+        </div>
+    </div>
+
+    <button class="btn btn-success btn-block" type="submit">Submit</button>
+</form>

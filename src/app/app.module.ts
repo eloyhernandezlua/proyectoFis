@@ -17,6 +17,9 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
+import { PublicaComponent } from './components/publica/publica.component';
+import {FormsModule} from '@angular/forms';
+import { SingupComponent } from './components/singup/singup.component';
 
 @NgModule({
   declarations: [
@@ -30,14 +33,17 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
     MensajesComponent,
     LoginComponent,
     PrincipalComponent,
-    SubcatComponent
+    SubcatComponent,
+    PublicaComponent,
+    SingupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.config),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FormsModule
 
   ],
   providers: [],
