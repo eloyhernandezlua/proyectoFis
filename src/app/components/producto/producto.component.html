@@ -1,16 +1,18 @@
 <div class="row">
     <div class="card col-6 mr-3">
         <div>
-            <img src="https://pbs.twimg.com/profile_images/817805004136296448/Y1w98m-t_400x400.jpg" alt="...">
+            <img *ngIf="producto" src="{{producto.producto.imagen}}" style="width: 100%  " alt="...">
         </div>
     </div>
     <div class="card col-5 ">
         <div class="card-body">
             <h5 class="card-title">Telefono</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+            <h6 class="card-subtitle mb-2 text-muted">Contacta al vendedor</h6>
+            <br>
+            <img src="https://image.flaticon.com/icons/png/512/15/15895.png" style="width: 33%">
+            <br>
+            <h4 *ngIf="user" class="card-title">{{user.telefono}}</h4>
+
         </div>
     </div>
 
@@ -19,21 +21,30 @@
 <div class="row">
     <div class="card col-6">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+            <h5 class="card-title">Descripción</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Más información acerca del producto</h6>
+            <h3 *ngIf="producto" class="card-title">{{producto.producto.descripcion}}</h3>
         </div>
     </div>
     <div class="card col-5 ml-3">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+            <h5 class="card-title">Información del vendedor</h5>
+            <h6 *ngIf="user" class="card-subtitle mb-2 text-muted">{{user.nombre}}</h6>
+            <h6 *ngIf="user" class="card-subtitle mb-2 text-muted">{{user.email}}</h6>
         </div>
     </div>
     <br>
+</div>
+<br>
+<br>
+<div class="col-12">
+    <form>
+        <div class="form-group">
+            <h3 for="exampleFormControlTextarea1">Contacta al vendedor</h3>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary mb-2">Enviar correo</button>
+
+    </form>
 </div>

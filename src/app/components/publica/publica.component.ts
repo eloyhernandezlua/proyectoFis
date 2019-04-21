@@ -14,7 +14,8 @@ export class PublicaComponent implements OnInit {
     descripcion: null,
     precio: null,
     cat: null,
-    subcat: null
+    subcat: null,
+    campus:null
   } ;
 categorias;
 subcategorias;
@@ -36,7 +37,7 @@ subcategorias;
           this.router.navigateByUrl('/');
         })
         .catch(() => {
-          alert('Erorr');
+          alert('Error');
         });
     } else {
       alert("Faltan campos por llenar");

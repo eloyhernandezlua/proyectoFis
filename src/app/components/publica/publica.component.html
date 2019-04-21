@@ -25,6 +25,13 @@
             <option *ngFor= "let subcategoria of subcategorias | async" value="{{subcategoria.id}}">{{subcategoria.id}}</option>
           </select>
         </div>
+
+        <label for="Campus">Campus</label>
+        <select class="custom-select" id="Campus" [(ngModel)]="producto.campus" name="campus" (change)="onCatChange()" required>
+          <option selected>Selecciona campus</option>
+          <option *ngFor= "let categoria of categorias | async" value="{{categoria.id}}">{{categoria.id}}</option>
+        </select>
+
     </div>
 
     <button class="btn btn-success btn-block" type="submit">Submit</button>

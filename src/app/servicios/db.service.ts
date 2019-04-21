@@ -14,6 +14,7 @@ export class DbService {
   getProduct(cat, subcat, id) {
     return this.afs.doc(`categorias/${cat}/subcat/${subcat}/productos/${id}`).snapshotChanges().pipe(
       map(document => {
+        console.log(document.payload.data());
         return document.payload.data();
       })
     );
@@ -104,6 +105,9 @@ publish(producto) {
   return this.afs.collection(`categorias/${producto.cat}/subcat/${producto.subcat}/productos`).add(data);
 }
 
+userInfo(id) {
+  return this.afs.doc(`users/${id}`).valueChanges();
+}
 
 }
 

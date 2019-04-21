@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DbService } from '../../servicios/db.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-singup',
@@ -16,7 +17,7 @@ export class SingupComponent implements OnInit {
     pwd: null,
     pwd2: null
   };
-  constructor(private db: DbService) { }
+  constructor(private db: DbService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -24,7 +25,13 @@ export class SingupComponent implements OnInit {
   onSubmit() {
     const {nombre, telefono, email, pwd, pwd2} = this.usuario;
     if (nombre && telefono && email && pwd && pwd === pwd2) {
-      this.db.signUp(this.usuario);
+      this.db.signUp(this.usuario)
+      .then(() => {
+        alert('Usuario registrado con éxito');
+        this.router.navigateByUrl('/');
+      });
+    } else if (pwd !== pwd2) {
+      alert("La contraseña no coincide");
     } else {
       alert("Faltan campos por llenar");
     }
