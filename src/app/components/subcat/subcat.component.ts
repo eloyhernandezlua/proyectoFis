@@ -8,11 +8,28 @@ import { DbService } from 'src/app/servicios/db.service';
 })
 export class SubcatComponent implements OnInit {
   productos;
+  link;
   constructor(private db: DbService) { }
 
   ngOnInit() {
-    const link = this.db.getCurrentUrl();
-    this.productos = this.db.getProducts(link[1], link[2]);
+    this.link = this.db.getCurrentUrl();
+    this.productos = this.db.getProducts(this.link[1], this.link[2]);
+  }
+
+  changeCampus(event) {
+    if (event !== 'campus') {
+      this.productos = this.db.getProductsByCampus(this.link[1], this.link[2], event);
+    } else {
+      this.productos = this.db.getProducts(this.link[1], this.link[2]);
+    }
+  }
+
+  changePrice(event) {
+    if (event.filtro !== 'f') {
+      this.productos = this.db.getProductsByPrice(this.link[1], this.link[2], event.filtro, event.price);
+    } else {
+      this.productos = this.db.getProducts(this.link[1], this.link[2]);
+    }
   }
 
 }

@@ -27,7 +27,40 @@ export class DbService {
         return result;
       }))
     );
+  }
 
+  getProductsByCampus(cat, subcat, campus) {
+    return this.afs.collection(`categorias/${cat}/subcat/${subcat}/productos`, ref => ref.where('producto.campus', '==', campus))
+    .snapshotChanges().pipe(
+      map(change => change.map(document => {
+        const result = document.payload.doc.data() as any;
+        result.id = document.payload.doc.id;
+        return result;
+      }))
+    );
+  }
+
+  getProductsByPrice(cat, subcat, filtro, price) {
+    let qFiltro;
+    switch (filtro) {
+      case 'menor':
+        qFiltro = '<=';
+        break;
+      case 'mayor':
+        qFiltro = '>=';
+        break;
+      case 'igual':
+        qFiltro = '==';
+        break;
+    }
+    return this.afs.collection(`categorias/${cat}/subcat/${subcat}/productos`, ref => ref.where('producto.precio', qFiltro, price))
+    .snapshotChanges().pipe(
+      map(change => change.map(document => {
+        const result = document.payload.doc.data() as any;
+        result.id = document.payload.doc.id;
+        return result;
+      }))
+    );
   }
 
   getCategorias(cat) {
@@ -108,6 +141,16 @@ addSubCat(cat, subcat) {
   this.afs.doc(`categorias/${cat}/subcat/${subcat}`).set({});
 }
 
+addInfo(info) {
+  return this.afs.doc('ajustes/info').update(info)
+  .catch(() => {
+    this.afs.doc('ajustes/info').set(info);
+  });
+}
+
+getInfo() {
+  return this.afs.doc('ajustes/info').valueChanges();
+}
 
 }
 

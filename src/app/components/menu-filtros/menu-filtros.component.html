@@ -9,17 +9,24 @@
     <br>
 
     <br>
-    <select class="custom-select">
+    <select class="custom-select" *ngIf="info" (change)="onChange($event)">
           <option selected>campus</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
+          <option *ngFor="let campus of info" value="{{campus}}">{{campus}}</option>
+    </select>
 
     <br>
     <br>
-    <label for="customRange1">Precio</label>
-    <input type="range" class="custom-range" id="customRange1">
+    <select class="custom-select" [(ngModel)]="price.filtro" name="filtro">
+        <option value="f">Filtrar por</option>
+        <option value="menor">Menor o igual a</option>
+        <option value="mayor">Mayor o igual a</option>
+        <option value="igual">Igual a</option>
+    </select>
+    <div class="form-group">
+        <input type="text" placeholder="Precio" class="form-control mt-2" [(ngModel)]="price.price" name="price">
+    </div>
+    <button class="btn btn-primary btn-block" (click)="onPriceChange()">Filtrar</button>
+
 
 
 
