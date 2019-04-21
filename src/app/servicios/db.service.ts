@@ -108,6 +108,10 @@ publish(producto) {
 userInfo(id) {
   return this.afs.doc(`users/${id}`).valueChanges();
 }
+addSubCat(cat, subcat) {
+  this.afs.doc(`categorias/${cat}/subcat/${subcat}`).set({});
+}
+
 
 }
 

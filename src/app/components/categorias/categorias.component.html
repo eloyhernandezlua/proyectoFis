@@ -7,6 +7,7 @@
                 <option selected>¿Qué buscas?</option>
                 <option *ngFor="let subcat of categorias | async" value="{{subcat.id}}">{{subcat.id}}</option>
             </select>
+            <!--<div class="btn btn-block btn-primary" (click)="addSubCat()">Añadir subcategoria <i class="fa fa-plus"></i></div>-->
         </form>
     </div>
 </div>

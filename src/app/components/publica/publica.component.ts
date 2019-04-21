@@ -15,7 +15,7 @@ export class PublicaComponent implements OnInit {
     precio: null,
     cat: null,
     subcat: null,
-    campus:null
+    campus: null
   } ;
 categorias;
 subcategorias;
@@ -40,7 +40,7 @@ subcategorias;
           alert('Error');
         });
     } else {
-      alert("Faltan campos por llenar");
+      alert('Faltan campos por llenar');
     }
   }
 
