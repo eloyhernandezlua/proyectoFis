@@ -1,16 +1,16 @@
 <form ngForm="pForm" (submit)="onSubmit()" onsubmit="return false">
     <div class="form-group">
         <label for="Nombre">Nombre del producto</label>
-        <input class="form-control" type="text" id="Nombre" [(ngModel)]="producto.nombre" name="nombre" required>
+        <input minlength="1" class="form-control" type="text" id="Nombre" [(ngModel)]="producto.nombre" name="nombre" required>
 
         <label for="Imagen">Imagen del producto</label>
-        <input class="form-control" type="text" id="Imagen" [(ngModel)]="producto.imagen" name="imagen" required>
+        <input minlength="1" class="form-control" type="text" id="Imagen" [(ngModel)]="producto.imagen" name="imagen" required>
 
         <label for="Descripcion">Descripción del producto</label>
-        <input class="form-control" type="text" id="Descripcion" [(ngModel)]="producto.descripcion" name="descripcion" required>
+        <input minlength="1" class="form-control" type="text" id="Descripcion" [(ngModel)]="producto.descripcion" name="descripcion" required>
 
         <label for="Precio">Precio del producto</label>
-        <input class="form-control" type="text" id="Precio" [(ngModel)]="producto.precio" name="precio" required>
+        <input minlength="1" class="form-control" type="text" id="Precio" [(ngModel)]="producto.precio" name="precio" required>
 
         <label for="Categoria">Categoria del producto</label>
         <select class="custom-select" id="Categoria" [(ngModel)]="producto.cat" name="cat" (change)="onCatChange()" required>
@@ -27,10 +27,10 @@
         </div>
 
         <label for="Campus">Campus</label>
-        <select class="custom-select" id="Campus" [(ngModel)]="producto.campus" name="campus" (change)="onCatChange()" required>
-          <option selected>Selecciona campus</option>
-          <option *ngFor= "let categoria of categorias | async" value="{{categoria.id}}">{{categoria.id}}</option>
-        </select>
+        <select class="custom-select" *ngIf="info" [(ngModel)]="producto.campus" name="campus">
+          <option selected>campus</option>
+          <option *ngFor="let campus of info" value="{{campus}}">{{campus}}</option>
+    </select>
 
     </div>
 

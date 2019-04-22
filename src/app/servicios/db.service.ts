@@ -45,10 +45,10 @@ export class DbService {
     let qFiltro;
     switch (filtro) {
       case 'menor':
-        qFiltro = '<=';
+        qFiltro = '>=';
         break;
       case 'mayor':
-        qFiltro = '>=';
+        qFiltro = '<=';
         break;
       case 'igual':
         qFiltro = '==';

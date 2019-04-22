@@ -12,19 +12,23 @@ export class PublicaComponent implements OnInit {
     imagen: null,
     nombre: null,
     descripcion: null,
-    precio: null,
+    precio: 0,
     cat: null,
     subcat: null,
     campus: null
   } ;
 categorias;
 subcategorias;
+info;
 
   constructor(private db: DbService, private router: Router) { }
 
   ngOnInit() {
 
     this.categorias = this.db.getCat();
+    this.db.getInfo().subscribe(info => {
+      this.info = info['campus'];
+    });
 
   }
 

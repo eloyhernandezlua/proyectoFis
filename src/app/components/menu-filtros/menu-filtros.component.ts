@@ -4,7 +4,7 @@ import { DbService } from 'src/app/servicios/db.service';
 @Component({
   selector: 'app-menu-filtros',
   templateUrl: './menu-filtros.component.html',
-  styleUrls: ['./menu-filtros.component.css']
+  styleUrls: ['./menu-filtros.component.css'] 
 })
 export class MenuFiltrosComponent implements OnInit {
 
