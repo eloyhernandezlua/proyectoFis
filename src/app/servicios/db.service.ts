@@ -20,7 +20,9 @@ export class DbService {
     );
   }
 
-  getProducts(cat, subcat) {
+  getProducts(cat: string, subcat: string) {
+    cat = cat.replace('%20', ' ');
+    subcat = subcat.replace('%20', ' ');
     return this.afs.collection(`categorias/${cat}/subcat/${subcat}/productos`).snapshotChanges().pipe(
       map(change => change.map(document => {
         const result = document.payload.doc.data() as any;
@@ -31,6 +33,8 @@ export class DbService {
   }
 
   getProductsByCampus(cat, subcat, campus) {
+    cat = cat.replace('%20', ' ');
+    subcat = subcat.replace('%20', ' ');
     return this.afs.collection(`categorias/${cat}/subcat/${subcat}/productos`, ref => ref.where('producto.campus', '==', campus))
     .snapshotChanges().pipe(
       map(change => change.map(document => {
@@ -42,6 +46,8 @@ export class DbService {
   }
 
   getProductsByPrice(cat, subcat, filtro, price) {
+    cat = cat.replace('%20', ' ');
+    subcat = subcat.replace('%20', ' ');
     let qFiltro;
     switch (filtro) {
       case 'menor':
