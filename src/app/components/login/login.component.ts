@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
     pwd: null
   };
 
-  constructor(private db: DbService, private router:Router) { }
+  constructor(private db: DbService, private router: Router) { }
 
   ngOnInit() {
   }

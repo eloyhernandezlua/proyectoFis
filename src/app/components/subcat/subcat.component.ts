@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DbService } from 'src/app/servicios/db.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-subcat',
@@ -9,7 +10,7 @@ import { DbService } from 'src/app/servicios/db.service';
 export class SubcatComponent implements OnInit {
   productos;
   link;
-  constructor(private db: DbService) { }
+  constructor(private db: DbService, private router: Router) { }
 
   ngOnInit() {
     this.link = this.db.getCurrentUrl();
@@ -30,6 +31,14 @@ export class SubcatComponent implements OnInit {
     } else {
       this.productos = this.db.getProducts(this.link[1], this.link[2]);
     }
+  }
+
+  changeSubCat(event) {
+    this.router.navigateByUrl(event)
+    .then(() => {
+      this.ngOnInit();
+    });
+    
   }
 
 }

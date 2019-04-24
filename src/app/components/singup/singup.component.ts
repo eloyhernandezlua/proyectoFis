@@ -23,17 +23,21 @@ export class SingupComponent implements OnInit {
   }
 
   onSubmit() {
+
     const {nombre, telefono, email, pwd, pwd2} = this.usuario;
-    if (nombre && telefono && email && pwd && pwd === pwd2) {
+    const tec = email.split('@')[1];
+    if (nombre && telefono && email && pwd && pwd === pwd2 && (tec === 'itesm.mx' || tec === 'tec.mx')) {
       this.db.signUp(this.usuario)
       .then(() => {
         alert('Usuario registrado con éxito');
         this.router.navigateByUrl('/');
       });
     } else if (pwd !== pwd2) {
-      alert("La contraseña no coincide");
+      alert('La contraseña no coincide');
+    } else if (tec !== 'itesm.mx' || tec !== 'tec.mx') {
+      alert ('Favor de ingeresar tu correo institucional \n @itesm.mx o @tec.mx');
     } else {
-      alert("Faltan campos por llenar");
+      alert('Faltan campos por llenar');
     }
   }
 

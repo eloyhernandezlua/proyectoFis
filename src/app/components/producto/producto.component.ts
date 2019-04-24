@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DbService } from '../../servicios/db.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-producto',
@@ -10,11 +11,11 @@ export class ProductoComponent implements OnInit {
 
   producto;
   user;
-  constructor(private db: DbService) { }
-
+  constructor(private db: DbService, private router: Router) { }
+  link = this.db.getCurrentUrl();
   ngOnInit() {
-    const link = this.db.getCurrentUrl();
-    this.db.getProduct(link[1], link[2], link[3]).subscribe(p => {
+    
+    this.db.getProduct(this.link[1], this.link[2], this.link[3]).subscribe(p => {
       console.log(p);
       this.producto = p;
       this.db.userInfo(p['user']).subscribe(u => {
@@ -23,5 +24,8 @@ export class ProductoComponent implements OnInit {
       });
     });
   }
-
+  mensaje() {
+    alert('Mensaje enviado con éxito!');
+    this.router.navigateByUrl(`/${this.link[1]}/${this.link[2]}`);
+    }
 }

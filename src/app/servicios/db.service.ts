@@ -12,6 +12,8 @@ export class DbService {
   constructor(private afs: AngularFirestore, private router: Router, private auth: AngularFireAuth) { }
 
   getProduct(cat, subcat, id) {
+    cat = cat.replace('%20', ' ');
+    subcat = subcat.replace('%20', ' ');
     return this.afs.doc(`categorias/${cat}/subcat/${subcat}/productos/${id}`).snapshotChanges().pipe(
       map(document => {
         console.log(document.payload.data());
@@ -71,6 +73,7 @@ export class DbService {
   }
 
   getCategorias(cat) {
+    cat = cat.replace('%20', ' ');
     return this.afs.collection(`categorias/${cat}`).snapshotChanges().pipe(
       map(change => change.map(document => {
         const result = document.payload.doc.data() as any;
@@ -82,6 +85,7 @@ export class DbService {
   }
 
   getSubcat(cat) {
+    cat = cat.replace('%20', ' ');
     return this.afs.collection(`categorias/${cat}/subcat`).snapshotChanges().pipe(
       map(change => change.map(document => {
         const result = document.payload.doc.data() as any;

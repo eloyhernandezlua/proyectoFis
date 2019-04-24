@@ -1,10 +1,8 @@
 <form>
-    <select class="custom-select">
-        <option selected>subcategorias</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
+    <select class="custom-select" id="Subcategoria" [(ngModel)]="producto.subcategoria" name="subcat" (change)="onChangesub($event)">
+                <option value="s" selected>Navega en esta categoría</option>
+                <option *ngFor= "let subcategoria of subcategorias | async" value="{{subcategoria.id}}">{{subcategoria.id}}</option>
+              </select>
 
     <br>
 
